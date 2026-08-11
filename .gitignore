@@ -1,0 +1,10 @@
+# Ignore local dependencies
+project/node_modules/
+node_modules/
+
+# Ignore build output
+project/Hannah main Claude website/dist/
+
+# VS Code settings and system files
+.vscode/
+.DS_Store
