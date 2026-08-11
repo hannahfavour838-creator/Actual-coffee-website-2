@@ -1,0 +1,353 @@
+/* ============================================
+   HANNAH COFFEE — INTERACTIVE SCRIPT
+   ============================================ */
+
+document.addEventListener("DOMContentLoaded", () => {
+  /* ===== PAGE LOADER ===== */
+  const loader = document.getElementById("pageLoader");
+  window.addEventListener("load", () => {
+    setTimeout(() => loader.classList.add("hidden"), 600);
+  });
+  // Safety fallback in case load already fired
+  setTimeout(() => loader.classList.add("hidden"), 3000);
+
+  /* ===== NAVBAR SCROLL EFFECT ===== */
+  const navbar = document.getElementById("navbar");
+  const heroBg = document.getElementById("heroBg");
+
+  function onScroll() {
+    const scrolled = window.scrollY;
+
+    // Sticky navbar background
+    if (scrolled > 60) {
+      navbar.classList.add("scrolled");
+    } else {
+      navbar.classList.remove("scrolled");
+    }
+
+    // Hero parallax
+    if (heroBg && scrolled < window.innerHeight) {
+      heroBg.style.transform = `scale(1.1) translateY(${scrolled * 0.4}px)`;
+    }
+  }
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+
+  /* ===== MOBILE HAMBURGER MENU ===== */
+  const hamburger = document.getElementById("hamburger");
+  const navMenu = document.getElementById("navMenu");
+
+  hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active");
+    navMenu.classList.toggle("active");
+    hamburger.setAttribute(
+      "aria-expanded",
+      hamburger.classList.contains("active"),
+    );
+  });
+
+  // Close menu when a nav link is clicked
+  document.querySelectorAll(".nav-link").forEach((link) => {
+    link.addEventListener("click", () => {
+      hamburger.classList.remove("active");
+      navMenu.classList.remove("active");
+    });
+  });
+
+  /* ===== ACTIVE NAV LINK ON SCROLL ===== */
+  const sections = document.querySelectorAll("section[id]");
+  const navLinks = document.querySelectorAll(".nav-link");
+
+  function updateActiveNav() {
+    const scrollPos = window.scrollY + 120;
+    let current = "";
+
+    sections.forEach((section) => {
+      const top = section.offsetTop;
+      const height = section.offsetHeight;
+      if (scrollPos >= top && scrollPos < top + height) {
+        current = section.getAttribute("id");
+      }
+    });
+
+    navLinks.forEach((link) => {
+      link.classList.remove("active");
+      if (link.getAttribute("href") === "#" + current) {
+        link.classList.add("active");
+      }
+    });
+  }
+
+  window.addEventListener("scroll", updateActiveNav, { passive: true });
+
+  /* ===== SCROLL REVEAL (IntersectionObserver) ===== */
+  const revealElements = document.querySelectorAll(".reveal");
+
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.12,
+      rootMargin: "0px 0px -60px 0px",
+    },
+  );
+
+  revealElements.forEach((el) => revealObserver.observe(el));
+
+  /* ===== SMOOTH SCROLLING (native via CSS, but offset for navbar) ===== */
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+      const targetId = this.getAttribute("href");
+      if (targetId === "#") return;
+      const target = document.querySelector(targetId);
+      if (!target) return;
+
+      e.preventDefault();
+      const offset = 70;
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: "smooth" });
+    });
+  });
+
+  /* ===== SHOPPING CART ===== */
+  const cart = [];
+  const cartBtn = document.getElementById("cartBtn");
+  const cartDrawer = document.getElementById("cartDrawer");
+  const cartOverlay = document.getElementById("cartOverlay");
+  const cartClose = document.getElementById("cartClose");
+  const cartItems = document.getElementById("cartItems");
+  const cartTotal = document.getElementById("cartTotal");
+  const cartCount = document.getElementById("cartCount");
+  const checkoutBtn = document.getElementById("checkoutBtn");
+
+  function openCart() {
+    cartDrawer.classList.add("active");
+    cartOverlay.classList.add("active");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeCart() {
+    cartDrawer.classList.remove("active");
+    cartOverlay.classList.remove("active");
+    document.body.style.overflow = "";
+  }
+
+  cartBtn.addEventListener("click", openCart);
+  cartClose.addEventListener("click", closeCart);
+  cartOverlay.addEventListener("click", closeCart);
+
+  document.querySelectorAll(".add-to-cart").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const name = btn.dataset.name;
+      const price = parseFloat(btn.dataset.price);
+      addItem(name, price);
+
+      // Button feedback
+      const originalText = btn.textContent;
+      btn.textContent = "Added!";
+      btn.style.background = "var(--success)";
+      setTimeout(() => {
+        btn.textContent = originalText;
+        btn.style.background = "";
+      }, 1200);
+
+      // Cart count bump
+      cartCount.classList.add("bump");
+      setTimeout(() => cartCount.classList.remove("bump"), 300);
+    });
+  });
+
+  function addItem(name, price) {
+    const existing = cart.find((item) => item.name === name);
+    if (existing) {
+      existing.qty++;
+    } else {
+      cart.push({ name, price, qty: 1 });
+    }
+    renderCart();
+  }
+
+  function removeItem(name) {
+    const idx = cart.findIndex((item) => item.name === name);
+    if (idx !== -1) cart.splice(idx, 1);
+    renderCart();
+  }
+
+  function changeQty(name, delta) {
+    const item = cart.find((item) => item.name === name);
+    if (!item) return;
+    item.qty += delta;
+    if (item.qty <= 0) {
+      removeItem(name);
+      return;
+    }
+    renderCart();
+  }
+
+  function renderCart() {
+    const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+    const totalPrice = cart.reduce(
+      (sum, item) => sum + item.qty * item.price,
+      0,
+    );
+
+    cartCount.textContent = totalQty;
+    cartTotal.textContent = "$" + totalPrice.toFixed(2);
+
+    if (cart.length === 0) {
+      cartItems.innerHTML =
+        '<p class="cart-empty">Your cart is empty.<br>Browse our menu and add something delicious! ☕</p>';
+      return;
+    }
+
+    cartItems.innerHTML = cart
+      .map(
+        (item) => `
+            <div class="cart-item">
+                <div class="cart-item-info">
+                    <div class="cart-item-name">${item.name}</div>
+                    <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+                    <div class="cart-item-qty">
+                        <button class="qty-btn" onclick="changeQty('${item.name}', -1)">−</button>
+                        <span class="qty-value">${item.qty}</span>
+                        <button class="qty-btn" onclick="changeQty('${item.name}', 1)">+</button>
+                    </div>
+                </div>
+                <button class="cart-item-remove" onclick="removeItem('${item.name}')" aria-label="Remove ${item.name}">×</button>
+            </div>
+        `,
+      )
+      .join("");
+  }
+
+  // Expose for inline onclick handlers
+  window.removeItem = removeItem;
+  window.changeQty = changeQty;
+
+  checkoutBtn.addEventListener("click", () => {
+    if (cart.length === 0) {
+      checkoutBtn.textContent = "Your cart is empty";
+      setTimeout(() => (checkoutBtn.textContent = "Checkout"), 1500);
+      return;
+    }
+    const total = cart.reduce((sum, item) => sum + item.qty * item.price, 0);
+    checkoutBtn.textContent = `Order placed! $${total.toFixed(2)} — Thank you! ☕`;
+    checkoutBtn.style.background = "var(--success)";
+    cart.length = 0;
+    renderCart();
+    setTimeout(() => {
+      checkoutBtn.textContent = "Checkout";
+      checkoutBtn.style.background = "";
+      closeCart();
+    }, 2500);
+  });
+
+  /* ===== REVIEWS CAROUSEL ===== */
+  const track = document.getElementById("reviewsTrack");
+  const prevBtn = document.getElementById("prevReview");
+  const nextBtn = document.getElementById("nextReview");
+  const dotsContainer = document.getElementById("carouselDots");
+
+  const reviewCards = track.querySelectorAll(".review-card");
+  const totalReviews = reviewCards.length;
+
+  function getVisibleCount() {
+    if (window.innerWidth <= 768) return 1;
+    if (window.innerWidth <= 1024) return 2;
+    return 3;
+  }
+
+  let currentSlide = 0;
+  let visibleCount = getVisibleCount();
+  let maxSlide = Math.max(0, totalReviews - visibleCount);
+
+  function createDots() {
+    dotsContainer.innerHTML = "";
+    const dotCount = maxSlide + 1;
+    for (let i = 0; i < dotCount; i++) {
+      const dot = document.createElement("button");
+      dot.className = "carousel-dot" + (i === 0 ? " active" : "");
+      dot.setAttribute("aria-label", "Go to slide " + (i + 1));
+      dot.addEventListener("click", () => goToSlide(i));
+      dotsContainer.appendChild(dot);
+    }
+  }
+
+  function updateCarousel() {
+    visibleCount = getVisibleCount();
+    maxSlide = Math.max(0, totalReviews - visibleCount);
+    if (currentSlide > maxSlide) currentSlide = maxSlide;
+
+    const cardWidth = reviewCards[0].getBoundingClientRect().width;
+    const gap = 24; // matches CSS gap of 1.5rem
+    const offset = currentSlide * (cardWidth + gap);
+    track.style.transform = `translateX(-${offset}px)`;
+
+    createDots();
+    updateDots();
+  }
+
+  function updateDots() {
+    document.querySelectorAll(".carousel-dot").forEach((dot, i) => {
+      dot.classList.toggle("active", i === currentSlide);
+    });
+  }
+
+  function goToSlide(slide) {
+    currentSlide = slide;
+    updateCarousel();
+  }
+
+  function nextSlide() {
+    currentSlide = currentSlide >= maxSlide ? 0 : currentSlide + 1;
+    updateCarousel();
+  }
+
+  function prevSlide() {
+    currentSlide = currentSlide <= 0 ? maxSlide : currentSlide - 1;
+    updateCarousel();
+  }
+
+  nextBtn.addEventListener("click", nextSlide);
+  prevBtn.addEventListener("click", prevSlide);
+
+  // Auto-advance every 5 seconds
+  let autoPlay = setInterval(nextSlide, 5000);
+
+  // Pause on hover
+  const carousel = document.getElementById("reviewsCarousel");
+  carousel.addEventListener("mouseenter", () => clearInterval(autoPlay));
+  carousel.addEventListener("mouseleave", () => {
+    autoPlay = setInterval(nextSlide, 5000);
+  });
+
+  // Recalculate on resize
+  let resizeTimer;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(updateCarousel, 200);
+  });
+
+  // Initialize
+  updateCarousel();
+
+  /* ===== NEWSLETTER FORM ===== */
+  const newsletterForm = document.getElementById("newsletterForm");
+  const newsletterSuccess = document.getElementById("newsletterSuccess");
+
+  newsletterForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const input = newsletterForm.querySelector("input");
+    if (input.value.trim()) {
+      newsletterSuccess.classList.add("show");
+      input.value = "";
+      setTimeout(() => newsletterSuccess.classList.remove("show"), 5000);
+    }
+  });
+});

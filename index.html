@@ -1,0 +1,968 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Hannah Coffee — Premium coffee for your best moments. Freshly roasted 100% Arabica beans, crafted with love."
+    />
+    <title>Hannah Coffee — Coffee For Your Best Moments</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- ===== PAGE LOADER ===== -->
+    <div class="page-loader" id="pageLoader">
+      <div class="loader-cup">
+        <div class="loader-steam"><span></span><span></span><span></span></div>
+        <div class="loader-cup-body"></div>
+      </div>
+      <p class="loader-text">Brewing something special…</p>
+    </div>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-container">
+        <a href="#home" class="nav-logo">
+          <span class="logo-icon">☕</span>
+          <span class="logo-text"
+            >Hannah<span class="logo-accent">Coffee</span></span
+          >
+        </a>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#menu" class="nav-link">Menu</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#locations" class="nav-link">Locations</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+          <li class="nav-cta-mobile">
+            <a href="#order" class="btn btn-primary btn-sm">Order Now</a>
+          </li>
+        </ul>
+        <div class="nav-right">
+          <a href="#order" class="btn btn-primary btn-sm nav-cta-desktop"
+            >Order Now</a
+          >
+          <button class="cart-btn" id="cartBtn" aria-label="Open cart">
+            <svg
+              viewBox="0 0 24 24"
+              width="22"
+              height="22"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="9" cy="21" r="1" />
+              <circle cx="20" cy="21" r="1" />
+              <path
+                d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"
+              />
+            </svg>
+            <span class="cart-count" id="cartCount">0</span>
+          </button>
+          <button
+            class="hamburger"
+            id="hamburger"
+            aria-label="Toggle menu"
+            aria-expanded="false"
+          >
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero" id="home">
+      <div class="hero-bg" id="heroBg"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-steam">
+        <span class="steam-line s1"></span>
+        <span class="steam-line s2"></span>
+        <span class="steam-line s3"></span>
+        <span class="steam-line s4"></span>
+        <span class="steam-line s5"></span>
+      </div>
+      <div class="hero-content">
+        <span class="hero-badge fade-in-up" style="--delay: 0.1s"
+          >☕ 100% Arabica Beans</span
+        >
+        <h1 class="hero-title fade-in-up" style="--delay: 0.25s">
+          Coffee For Your<br /><span class="hero-title-accent"
+            >Best Moments</span
+          >
+        </h1>
+        <p class="hero-subtitle fade-in-up" style="--delay: 0.4s">
+          Handcrafted with love from freshly roasted beans — every cup is a warm
+          invitation to slow down, breathe in, and savour the moment.
+        </p>
+        <div class="hero-buttons fade-in-up" style="--delay: 0.55s">
+          <a href="#menu" class="btn btn-outline">Explore Our Menu</a>
+          <a href="#order" class="btn btn-primary">Order Now</a>
+        </div>
+      </div>
+      <div class="hero-badges">
+        <span class="floating-badge badge-1">🌱 100% Arabica</span>
+        <span class="floating-badge badge-2">🔥 Freshly Roasted</span>
+      </div>
+      <a href="#menu" class="scroll-indicator" aria-label="Scroll down">
+        <span class="scroll-mouse"><span class="scroll-dot"></span></span>
+      </a>
+    </section>
+
+    <!-- ===== FEATURED MENU ===== -->
+    <section class="section menu-section" id="menu">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">Our Menu</span>
+          <h2 class="section-title">Crafted With Passion</h2>
+          <p class="section-subtitle">
+            From classic espresso to creamy matcha — explore the favourites our
+            customers keep coming back for.
+          </p>
+        </div>
+        <div class="menu-grid">
+          <article class="menu-card reveal">
+            <div class="menu-card-img">
+              <img
+                src="images/cappuccino.jpg"
+                alt="Cappuccino with heart-shaped latte art"
+                loading="lazy"
+              />
+              <span class="menu-tag">Popular</span>
+            </div>
+            <div class="menu-card-body">
+              <h3 class="menu-card-title">Cappuccino</h3>
+              <p class="menu-card-desc">
+                Rich espresso topped with velvety steamed milk and a delicate
+                foam heart.
+              </p>
+              <div class="menu-card-footer">
+                <span class="menu-price">$4.50</span>
+                <button
+                  class="btn btn-primary btn-sm add-to-cart"
+                  data-name="Cappuccino"
+                  data-price="4.50"
+                >
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="menu-card reveal" style="--delay: 0.1s">
+            <div class="menu-card-img">
+              <img
+                src="images/caramel-latte.jpg"
+                alt="Caramel latte with whipped cream and caramel drizzle"
+                loading="lazy"
+              />
+            </div>
+            <div class="menu-card-body">
+              <h3 class="menu-card-title">Caramel Latte</h3>
+              <p class="menu-card-desc">
+                Smooth espresso, steamed milk, and golden caramel — a sweet hug
+                in a cup.
+              </p>
+              <div class="menu-card-footer">
+                <span class="menu-price">$5.20</span>
+                <button
+                  class="btn btn-primary btn-sm add-to-cart"
+                  data-name="Caramel Latte"
+                  data-price="5.20"
+                >
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="menu-card reveal" style="--delay: 0.2s">
+            <div class="menu-card-img">
+              <img
+                src="images/iced-mocha.jpg"
+                alt="Iced mocha topped with whipped cream"
+                loading="lazy"
+              />
+              <span class="menu-tag tag-chilled">Chilled</span>
+            </div>
+            <div class="menu-card-body">
+              <h3 class="menu-card-title">Iced Mocha</h3>
+              <p class="menu-card-desc">
+                Espresso, chocolate, and chilled milk over ice — the perfect
+                afternoon lift.
+              </p>
+              <div class="menu-card-footer">
+                <span class="menu-price">$5.50</span>
+                <button
+                  class="btn btn-primary btn-sm add-to-cart"
+                  data-name="Iced Mocha"
+                  data-price="5.50"
+                >
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="menu-card reveal" style="--delay: 0.3s">
+            <div class="menu-card-img">
+              <img
+                src="images/espresso.jpg"
+                alt="Freshly brewed espresso in clear glasses"
+                loading="lazy"
+              />
+              <span class="menu-tag tag-pure">Pure</span>
+            </div>
+            <div class="menu-card-body">
+              <h3 class="menu-card-title">Espresso</h3>
+              <p class="menu-card-desc">
+                A bold, concentrated shot of our signature dark roast — pure and
+                intense.
+              </p>
+              <div class="menu-card-footer">
+                <span class="menu-price">$3.00</span>
+                <button
+                  class="btn btn-primary btn-sm add-to-cart"
+                  data-name="Espresso"
+                  data-price="3.00"
+                >
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="menu-card reveal" style="--delay: 0.4s">
+            <div class="menu-card-img">
+              <img
+                src="images/matcha-latte.jpg"
+                alt="Matcha latte with elegant swan latte art"
+                loading="lazy"
+              />
+              <span class="menu-tag tag-new">New</span>
+            </div>
+            <div class="menu-card-body">
+              <h3 class="menu-card-title">Matcha Latte</h3>
+              <p class="menu-card-desc">
+                Stone-ground ceremonial matcha whisked with creamy steamed milk.
+                Earthy and smooth.
+              </p>
+              <div class="menu-card-footer">
+                <span class="menu-price">$5.80</span>
+                <button
+                  class="btn btn-primary btn-sm add-to-cart"
+                  data-name="Matcha Latte"
+                  data-price="5.80"
+                >
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="menu-card reveal" style="--delay: 0.5s">
+            <div class="menu-card-img">
+              <img
+                src="images/cold-brew.jpg"
+                alt="Cold brew coffee in a transparent cup with ice"
+                loading="lazy"
+              />
+              <span class="menu-tag tag-chilled">Chilled</span>
+            </div>
+            <div class="menu-card-body">
+              <h3 class="menu-card-title">Cold Brew</h3>
+              <p class="menu-card-desc">
+                Slow-steeped for 18 hours — naturally sweet, smooth, and
+                refreshingly low in acidity.
+              </p>
+              <div class="menu-card-footer">
+                <span class="menu-price">$4.80</span>
+                <button
+                  class="btn btn-primary btn-sm add-to-cart"
+                  data-name="Cold Brew"
+                  data-price="4.80"
+                >
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ABOUT THE BRAND ===== -->
+    <section class="section about-section" id="about">
+      <div class="container about-grid">
+        <div class="about-images reveal">
+          <img
+            src="images/about-shop.jpg"
+            alt="Warm and inviting Hannah Coffee shop interior"
+            class="about-img-main"
+          />
+          <img
+            src="images/about-hannah.jpg"
+            alt="Hannah, founder of Hannah Coffee, smiling in her cafe"
+            class="about-img-secondary"
+          />
+          <div class="about-experience">
+            <span class="exp-number">5</span>
+            <span class="exp-label">Years+</span>
+          </div>
+        </div>
+        <div class="about-content reveal" style="--delay: 0.15s">
+          <span class="section-tag">Our Story</span>
+          <h2 class="section-title">A Girl, A Dream, A Cup Of Coffee</h2>
+          <p>
+            It started in a tiny kitchen with a second-hand espresso machine and
+            a big dream. Hannah was just nineteen when she roasted her first
+            batch of beans — carefully, nervously, and with a heart full of
+            hope.
+          </p>
+          <p>
+            She believed coffee wasn't just a drink; it was a moment of warmth,
+            a reason to pause, a way to bring people together. So she opened a
+            small cart on the corner of Maple Street, serving cups of joy to
+            early commuters.
+          </p>
+          <p>
+            Five years later, that little cart has grown into Hannah Coffee — a
+            beloved brand known for freshly roasted 100% Arabica beans,
+            handcrafted drinks, and a cozy space that feels like home. But the
+            heart of it all hasn't changed: every cup is still made with love.
+          </p>
+          <div class="about-stats">
+            <div class="stat-item">
+              <span class="stat-number">5<span class="stat-plus">+</span></span>
+              <span class="stat-label">Years of Craft</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number"
+                >50K<span class="stat-plus">+</span></span
+              >
+              <span class="stat-label">Happy Customers</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number"
+                >100<span class="stat-plus">%</span></span
+              >
+              <span class="stat-label">Arabica Beans</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SPECIAL OFFER ===== -->
+    <section class="section offer-section" id="order">
+      <div class="offer-bg-img" id="offerBg"></div>
+      <div class="offer-overlay"></div>
+      <div class="container offer-content reveal">
+        <span class="offer-badge">Limited Time</span>
+        <h2 class="offer-title">Your Mornings Deserve<br />Better Coffee</h2>
+        <p class="offer-text">
+          Get <strong>25% off</strong> your first order when you sign up for our
+          newsletter. Freshly roasted beans, delivered to your door — because
+          every morning should start with a cup you love.
+        </p>
+        <a href="#contact" class="btn btn-primary btn-lg">Order Now</a>
+        <p class="offer-fineprint">
+          *Offer valid for new customers only. One per household.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== WHY CHOOSE HANNAH COFFEE ===== -->
+    <section class="section features-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">Why Choose Us</span>
+          <h2 class="section-title">The Hannah Difference</h2>
+          <p class="section-subtitle">
+            Every cup is a promise — from bean to brew, we obsess over the
+            details so you don't have to.
+          </p>
+        </div>
+        <div class="features-grid">
+          <div class="feature-card reveal">
+            <div class="feature-icon">
+              <svg
+                viewBox="0 0 24 24"
+                width="32"
+                height="32"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+              </svg>
+            </div>
+            <h3 class="feature-title">Freshly Made</h3>
+            <p class="feature-desc">
+              Beans roasted in small batches every week, so every cup tastes
+              like it was just made for you.
+            </p>
+          </div>
+          <div class="feature-card reveal" style="--delay: 0.1s">
+            <div class="feature-icon">
+              <svg
+                viewBox="0 0 24 24"
+                width="32"
+                height="32"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M12 2l2.5 7h7.5l-6 4.5 2.3 7.5L12 16.5 5.7 21l2.3-7.5-6-4.5h7.5z"
+                />
+              </svg>
+            </div>
+            <h3 class="feature-title">Premium Beans</h3>
+            <p class="feature-desc">
+              Sourced from the finest 100% Arabica farms, ethically traded and
+              carefully selected for quality.
+            </p>
+          </div>
+          <div class="feature-card reveal" style="--delay: 0.2s">
+            <div class="feature-icon">
+              <svg
+                viewBox="0 0 24 24"
+                width="32"
+                height="32"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="1" y="3" width="15" height="13" rx="2" />
+                <path d="M16 8h4l3 3v5h-7V8z" />
+                <circle cx="5.5" cy="18.5" r="2.5" />
+                <circle cx="18.5" cy="18.5" r="2.5" />
+              </svg>
+            </div>
+            <h3 class="feature-title">Fast Delivery</h3>
+            <p class="feature-desc">
+              Hot coffee to your door in under 30 minutes, or beans shipped
+              fresh nationwide within 48 hours.
+            </p>
+          </div>
+          <div class="feature-card reveal" style="--delay: 0.3s">
+            <div class="feature-icon">
+              <svg
+                viewBox="0 0 24 24"
+                width="32"
+                height="32"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+                />
+              </svg>
+            </div>
+            <h3 class="feature-title">Made With Love</h3>
+            <p class="feature-desc">
+              Every drink is handcrafted by trained baristas who genuinely care
+              about your experience.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CUSTOMER REVIEWS ===== -->
+    <section class="section reviews-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">Testimonials</span>
+          <h2 class="section-title">Loved By Thousands</h2>
+          <p class="section-subtitle">
+            Don't just take our word for it — hear from the people who make our
+            mornings worth waking up for.
+          </p>
+        </div>
+        <div class="reviews-carousel" id="reviewsCarousel">
+          <div class="reviews-track" id="reviewsTrack">
+            <div class="review-card">
+              <div class="review-stars">★★★★★</div>
+              <p class="review-text">
+                "Hannah Coffee is my daily ritual. The cappuccino is the
+                creamiest I've ever had — it feels like a warm hug every single
+                morning."
+              </p>
+              <div class="review-author">
+                <span class="review-avatar" style="background: #d4a373">A</span>
+                <div>
+                  <span class="review-name">Aaliyah</span
+                  ><span class="review-role">Regular since 2021</span>
+                </div>
+              </div>
+            </div>
+            <div class="review-card">
+              <div class="review-stars">★★★★★</div>
+              <p class="review-text">
+                "I ordered the cold brew for a team meeting and everyone asked
+                where it was from. Now it's our office go-to. Absolutely premium
+                quality."
+              </p>
+              <div class="review-author">
+                <span class="review-avatar" style="background: #b08968">A</span>
+                <div>
+                  <span class="review-name">Aaron</span
+                  ><span class="review-role">Office Manager</span>
+                </div>
+              </div>
+            </div>
+            <div class="review-card">
+              <div class="review-stars">★★★★★</div>
+              <p class="review-text">
+                "The matcha latte changed my life — I'm not even exaggerating.
+                The atmosphere in the cafe is so cozy I never want to leave."
+              </p>
+              <div class="review-author">
+                <span class="review-avatar" style="background: #a98467">P</span>
+                <div>
+                  <span class="review-name">Pookie</span
+                  ><span class="review-role">Matcha Enthusiast</span>
+                </div>
+              </div>
+            </div>
+            <div class="review-card">
+              <div class="review-stars">★★★★★</div>
+              <p class="review-text">
+                "From the first sip you can taste the love and craft. Hannah's
+                story inspired me to chase my own dreams. Plus, the caramel
+                latte is unreal."
+              </p>
+              <div class="review-author">
+                <span class="review-avatar" style="background: #9c6644">G</span>
+                <div>
+                  <span class="review-name">Goodness</span
+                  ><span class="review-role">Loyal Customer</span>
+                </div>
+              </div>
+            </div>
+            <div class="review-card">
+              <div class="review-stars">★★★★★</div>
+              <p class="review-text">
+                "Fast delivery, beautiful packaging, and the freshest beans I've
+                ever brewed at home. Hannah Coffee ruined every other coffee for
+                me!"
+              </p>
+              <div class="review-author">
+                <span class="review-avatar" style="background: #7f5539">M</span>
+                <div>
+                  <span class="review-name">Marcus</span
+                  ><span class="review-role">Home Brewer</span>
+                </div>
+              </div>
+            </div>
+            <div class="review-card">
+              <div class="review-stars">★★★★★</div>
+              <p class="review-text">
+                "I stop by every morning before work. The baristas know my order
+                by heart and always greet me with a smile. It's my happy place."
+              </p>
+              <div class="review-author">
+                <span class="review-avatar" style="background: #b08968">S</span>
+                <div>
+                  <span class="review-name">Sophia</span
+                  ><span class="review-role">Daily Visitor</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-controls">
+          <button
+            class="carousel-btn"
+            id="prevReview"
+            aria-label="Previous review"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="20"
+              height="20"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+          </button>
+          <div class="carousel-dots" id="carouselDots"></div>
+          <button class="carousel-btn" id="nextReview" aria-label="Next review">
+            <svg
+              viewBox="0 0 24 24"
+              width="20"
+              height="20"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== COFFEE GALLERY ===== -->
+    <section class="section gallery-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">Gallery</span>
+          <h2 class="section-title">A Glimpse Inside</h2>
+          <p class="section-subtitle">
+            From the roastery to the cup — moments that make Hannah Coffee
+            special.
+          </p>
+        </div>
+        <div class="gallery-grid">
+          <div class="gallery-item reveal gallery-large">
+            <img
+              src="images/gallery-1.jpg"
+              alt="Close-up of roasted coffee beans"
+              loading="lazy"
+            />
+            <div class="gallery-overlay">
+              <span>Freshly Roasted Beans</span>
+            </div>
+          </div>
+          <div class="gallery-item reveal" style="--delay: 0.1s">
+            <img
+              src="images/gallery-2.jpg"
+              alt="Barista pouring a drink"
+              loading="lazy"
+            />
+            <div class="gallery-overlay"><span>Our Baristas</span></div>
+          </div>
+          <div class="gallery-item reveal" style="--delay: 0.2s">
+            <img
+              src="images/gallery-3.jpg"
+              alt="Display case of fresh pastries"
+              loading="lazy"
+            />
+            <div class="gallery-overlay"><span>Fresh Pastries</span></div>
+          </div>
+          <div class="gallery-item reveal" style="--delay: 0.3s">
+            <img
+              src="images/gallery-4.jpg"
+              alt="Coffee roaster machine"
+              loading="lazy"
+            />
+            <div class="gallery-overlay"><span>The Roastery</span></div>
+          </div>
+          <div class="gallery-item reveal" style="--delay: 0.4s">
+            <img
+              src="images/gallery-5.jpg"
+              alt="Overhead latte art coffee table"
+              loading="lazy"
+            />
+            <div class="gallery-overlay"><span>Latte Art</span></div>
+          </div>
+          <div class="gallery-item reveal gallery-wide" style="--delay: 0.5s">
+            <img
+              src="images/gallery-6.jpg"
+              alt="Cozy cafe interior with wooden decor"
+              loading="lazy"
+            />
+            <div class="gallery-overlay"><span>Cafe Atmosphere</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== LOCATIONS ===== -->
+    <section class="section locations-section" id="locations">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">Visit Us</span>
+          <h2 class="section-title">Find Your Nearest Hannah</h2>
+          <p class="section-subtitle">
+            Come say hello — we'd love to brew something special just for you.
+          </p>
+        </div>
+        <div class="locations-grid">
+          <div class="location-card reveal">
+            <div class="location-icon">
+              <svg
+                viewBox="0 0 24 24"
+                width="24"
+                height="24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+            </div>
+            <h3 class="location-title">Flagship Cafe</h3>
+            <p class="location-text">
+              128 Maple Street<br />Downtown, Portland, OR 97201
+            </p>
+            <div class="location-hours">
+              <span class="hours-day">Mon – Fri</span
+              ><span>7:00 AM – 8:00 PM</span>
+              <span class="hours-day">Sat – Sun</span
+              ><span>8:00 AM – 9:00 PM</span>
+            </div>
+            <p class="location-phone">📞 (503) 555-0142</p>
+          </div>
+          <div class="location-card reveal" style="--delay: 0.1s">
+            <div class="location-icon">
+              <svg
+                viewBox="0 0 24 24"
+                width="24"
+                height="24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+            </div>
+            <h3 class="location-title">Riverside Branch</h3>
+            <p class="location-text">
+              42 Riverbend Avenue<br />Riverside District, Portland, OR 97205
+            </p>
+            <div class="location-hours">
+              <span class="hours-day">Mon – Fri</span
+              ><span>6:30 AM – 7:00 PM</span>
+              <span class="hours-day">Sat – Sun</span
+              ><span>7:00 AM – 8:00 PM</span>
+            </div>
+            <p class="location-phone">📞 (503) 555-0188</p>
+          </div>
+          <div class="location-card reveal" style="--delay: 0.2s">
+            <div class="location-map">
+              <div class="map-placeholder">
+                <div class="map-grid"></div>
+                <div class="map-pin">
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="36"
+                    height="36"
+                    fill="#c08552"
+                    stroke="white"
+                    stroke-width="1.5"
+                  >
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                    <circle cx="12" cy="10" r="3" fill="white" />
+                  </svg>
+                </div>
+                <div class="map-route"></div>
+              </div>
+            </div>
+            <p class="map-caption">
+              128 Maple Street, Portland — Our flagship location in the heart of
+              downtown.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer" id="contact">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <a href="#home" class="nav-logo">
+            <span class="logo-icon">☕</span>
+            <span class="logo-text"
+              >Hannah<span class="logo-accent">Coffee</span></span
+            >
+          </a>
+          <p class="footer-tagline">
+            Coffee for your best moments — freshly roasted, handcrafted with
+            love since 2020.
+          </p>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram" class="social-link">
+              <svg
+                viewBox="0 0 24 24"
+                width="20"
+                height="20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="2" y="2" width="20" height="20" rx="5" />
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+              </svg>
+            </a>
+            <a href="#" aria-label="Facebook" class="social-link">
+              <svg
+                viewBox="0 0 24 24"
+                width="20"
+                height="20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                />
+              </svg>
+            </a>
+            <a href="#" aria-label="Twitter" class="social-link">
+              <svg
+                viewBox="0 0 24 24"
+                width="20"
+                height="20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"
+                />
+              </svg>
+            </a>
+            <a href="#" aria-label="YouTube" class="social-link">
+              <svg
+                viewBox="0 0 24 24"
+                width="20"
+                height="20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"
+                />
+                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" />
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#locations">Locations</a></li>
+            <li><a href="#order">Order Now</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Opening Hours</h4>
+          <ul class="footer-links">
+            <li><span>Mon – Fri: 7AM – 8PM</span></li>
+            <li><span>Sat – Sun: 8AM – 9PM</span></li>
+            <li><span>Holidays: 9AM – 6PM</span></li>
+          </ul>
+          <h4 class="footer-heading" style="margin-top: 1.5rem">Contact</h4>
+          <ul class="footer-links">
+            <li>📞 (503) 555-0142</li>
+            <li>✉ hello@hannahcoffee.com</li>
+            <li>📍 128 Maple Street, Portland</li>
+          </ul>
+        </div>
+        <div class="footer-col footer-newsletter">
+          <h4 class="footer-heading">Join Our Newsletter</h4>
+          <p class="newsletter-text">
+            Get 25% off your first order plus weekly brew tips and exclusive
+            offers.
+          </p>
+          <form class="newsletter-form" id="newsletterForm">
+            <input
+              type="email"
+              placeholder="Your email address"
+              required
+              aria-label="Email address"
+            />
+            <button type="submit" class="btn btn-primary btn-sm">
+              Subscribe
+            </button>
+          </form>
+          <p class="newsletter-success" id="newsletterSuccess">
+            Thanks for subscribing! Check your inbox for your 25% off code. ☕
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          &copy; 2024 Hannah Coffee. All rights reserved. Made with ❤ and a lot
+          of caffeine.
+        </p>
+      </div>
+    </footer>
+
+    <!-- ===== CART DRAWER ===== -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart">
+      <div class="cart-header">
+        <h3>Your Order</h3>
+        <button class="cart-close" id="cartClose" aria-label="Close cart">
+          <svg
+            viewBox="0 0 24 24"
+            width="22"
+            height="22"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          >
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
+      </div>
+      <div class="cart-items" id="cartItems">
+        <p class="cart-empty">
+          Your cart is empty.<br />Browse our menu and add something delicious!
+          ☕
+        </p>
+      </div>
+      <div class="cart-footer">
+        <div class="cart-total">
+          <span>Total</span><span id="cartTotal">$0.00</span>
+        </div>
+        <button class="btn btn-primary btn-block" id="checkoutBtn">
+          Checkout
+        </button>
+      </div>
+    </aside>
+
+    <script src="script.js"></script>
+  </body>
+</html>
